@@ -6,18 +6,26 @@ from random import randint
 import json
 
 class newPoet:
+    def __init__(self, name):
+        self.name = name
+        print("Hallo ich bin " + name + "!")
+        print("Ich bin ein poeti.")
+        print("Ein poeti kann Text zu anderem (besserem?) Text verarbeiten.")
+
+
     def saySomething(self, word):
         print(getWord.Synonym(word))
 
-    #Gibt das eingegebene Wort, ein dazupassendes Synonym und ein dazupassenden Reim aus.
+    # Gibt das eingegebene Wort, ein dazupassendes Synonym und ein dazupassenden Reim aus.
     def wsr(self, words):
         for word in words:
             print("Wort: " + word)
             print("Synonym: " + getWord.Synonym(word))
             print("Reim: " + getWord.Rhyme(word))
     
-    #Wandelt von einem Text zufällige Wörter in Reimwörter oder Synonyme um und gibt diesen dann aus.
-    def text2poetry(self, filepath, option, density):
+    # Wandelt von einem Text zufällige Wörter in Reimwörter oder Synonyme um und gibt diesen dann aus.
+    # Es kann eine der Optionen ["mix", "reim", "synonym"] gewählt werden und die Dichte der zu verändernden Worte gewählt werden.
+    def file2poetry(self, filepath, option, density):
         lines = getLines.fromFile(filepath)
         newLines = []
         for line in lines:
