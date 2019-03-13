@@ -10,7 +10,8 @@ class newPoet:
         self.name = name
         print("Hallo ich bin " + name + "!")
         print("Ich bin ein poeti.")
-        print("Ein poeti kann Text zu anderem (besserem?) Text verarbeiten.")
+        print("Ein poeti kann Text oder Worte zu anderem (besserem?) Text verarbeiten.")
+        print()
 
 
     def saySomething(self, word):
