@@ -2,7 +2,7 @@ import requests
 import random
 import json
 
-def getRandSynonym(word):
+def getSynonym(word):
         url = 'https://www.openthesaurus.de/synonyme/search?q=' + word + '&format=application/json'
         headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
         r = requests.get(url, headers=headers)
@@ -18,4 +18,4 @@ def getRandSynonym(word):
 
         return(random.choice(termsList))
 
-print(getRandSynonym(input("WORD!\n\n")))
+print(getSynonym(input("WORD!\n\n")))
