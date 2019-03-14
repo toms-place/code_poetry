@@ -4,13 +4,14 @@ import requests
 import random
 from random import randint
 import json
+import time
 
 class newPoet:
     def __init__(self, name):
         self.name = name
-        print("Hallo ich bin " + name + "!")
+        print("Hallo, mein Name ist " + name + "!")
         print("Ich bin ein poeti.")
-        print("Ein poeti kann Text oder Worte zu anderem (besserem?) Text verarbeiten.")
+        print("Ein poeti kann Texte oder Worte zu anderen (besseren?) Texten verarbeiten.")
         print()
 
 
@@ -20,9 +21,22 @@ class newPoet:
     # Gibt das eingegebene Wort, ein dazupassendes Synonym und ein dazupassenden Reim aus.
     def wsr(self, words):
         for word in words:
-            print("Wort: " + word)
-            print("Synonym: " + getWord.Synonym(word))
-            print("Reim: " + getWord.Rhyme(word))
+            print("Wort:     " + word)
+            time.sleep(2)
+            print("Synonym:  " + getWord.Synonym(word))
+            time.sleep(0.7)
+            print("Reim:     " + getWord.Rhyme(word))
+            time.sleep(0.7)
+            print("Synonym:  " + getWord.Synonym(word))
+            time.sleep(0.7)
+            print("Reim:     " + getWord.Rhyme(word))
+            time.sleep(0.7)
+            print("Synonym:  " + getWord.Synonym(word))
+            time.sleep(0.7)
+            print("Reim:     " + getWord.Rhyme(word))
+            time.sleep(0.7)
+            print()
+            time.sleep(3)
     
     # Wandelt von einem Text zufällige Wörter in Reimwörter oder Synonyme um und gibt diesen dann aus.
     # Es kann eine der Optionen ["mix", "reim", "synonym"] gewählt werden und die Dichte der zu verändernden Worte gewählt werden.
