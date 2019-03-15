@@ -7,5 +7,4 @@ ich.kann_etwas_sagen()
 ich.wandle_das_Wort_zu_Synonym_und_Reim()
 ich.wechsle_das_Wort(20) # mal
 
-print()
-ich.ändere_Text("texte/nena.txt", "reim", 4)
+ich.ändere_Text("texte/nena.txt", "reim", 3)
