@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
-from src import getWord, getLines
-import requests
-import random
+from Deutsche_Sprache import getWord, getLines
 from random import randint
+import random
+import requests
 import json
 import time
 
@@ -89,7 +89,7 @@ class ein_Poeti_und_heiße:
 
     # Wandelt von einem Text zufällige Wörter in Reimwörter oder Synonyme um und gibt diesen dann aus.
     # Es kann eine der Optionen ["mix", "reim", "synonym"] gewählt werden und die Dichte der zu verändernden Worte gewählt werden.
-    def file2poetry(self, filepath, option, density):
+    def ändere_Text(self, filepath, option, density):
         lines = getLines.fromFile(filepath)
         newLines = []
         for line in lines:
