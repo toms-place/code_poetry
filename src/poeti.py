@@ -52,8 +52,21 @@ class newPoet:
 
 
     # Gibt das eingegebene Wort, ein dazupassendes Synonym und ein dazupassenden Reim aus.
-    def wsr(self, words):
-        for word in words:
+    def wsr(self, *words):
+        print()
+        print("------------------")
+        print("Wort|Synonym|Reim:")
+        print("------------------")
+        print()
+        wordList = []
+        if isinstance(words, list):
+            wordList = words
+        else:
+            if len(words) > 0:
+                wordList.append(words)
+            else:
+                wordList.append(self.word)
+        for word in wordList:
             print("Wort:     " + word)
             time.sleep(2)
             print("Synonym:  " + getWord.Synonym(word))
@@ -110,17 +123,22 @@ class newPoet:
         print(string)
 
 
-    def wortWechsel(self):
+    #
+    def wortWechsel(self, amount=10, word="no word"):
+        print()
         print("-------------")
         print("Wortwechsel:")
         print("-------------")
         print()
-        word = self.word
-        for i in range(20):
+        if word == "no word":
+            word = self.word
+        for i in range(amount):
             if i%2 == 0:
                 word = getWord.Synonym(word)
-                print(word)
+                print("Synonym:    " + word)
             else:
                 word = getWord.Rhyme(word)
-                print(word)
-        
+                print("Reim:       " + word)
+            time.sleep(1)
+            if i != (amount) - 1:
+                print("∫")
