@@ -6,7 +6,7 @@ from random import randint
 import json
 import time
 
-class newPoet:
+class ein_Poeti_und_heiße:
     def __init__(self, name):
         self.name = name
         print()
@@ -19,7 +19,7 @@ class newPoet:
 
 
 
-    def saySomething(self):
+    def kann_etwas_sagen(self):
         print()
         print("Synonym:  " + getWord.Synonym(self.word))
         print()
@@ -28,12 +28,12 @@ class newPoet:
 
 
 
-    def collectSomeWords(self):
+    def brauche_Worte(self):
         flag = True
         self.words = []
 
         while flag == True:
-            elem = input("Gib mir ein Wort! \n")
+            elem = input("Gib mir ein Wort!\n")
             if elem == "stop" or elem == "no" or elem == "nein":
                 flag = False
             else:
@@ -43,8 +43,9 @@ class newPoet:
             self.word = random.choice(self.words)
             print()
             print("---------------------------------------------------")
-            print("Unser Wort des Tages: " + self.word)
+            print("Mein Wort des Tages: " + self.word)
             print("---------------------------------------------------")
+            print()
         except IndexError:
                 print("no Input")
                 pass
@@ -52,7 +53,7 @@ class newPoet:
 
 
     # Gibt das eingegebene Wort, ein dazupassendes Synonym und ein dazupassenden Reim aus.
-    def wsr(self, *words):
+    def wandle_das_Wort_zu_Synonym_und_Reim(self, *words):
         print()
         print("------------------")
         print("Wort|Synonym|Reim:")
@@ -123,8 +124,9 @@ class newPoet:
         print(string)
 
 
-    #
-    def wortWechsel(self, amount=10, word="no word"):
+    # Wandelt ein Wort in ein Synonym und weiter in einen Reim und diesen Reim weiter in ein Synonym und so weiter.
+    # Nimmt die Anzahl an Iterationen (Standard ist 10) und ein Wort entgegen.
+    def wechsle_das_Wort(self, amount=10, word="no word"):
         print()
         print("-------------")
         print("Wortwechsel:")
