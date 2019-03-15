@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from Deutsche_Sprache import getWord, getLines
+from deutsche_Sprache import getWord, getLines
 from random import randint
 import random
 import requests
@@ -9,9 +9,11 @@ import time
 class ein_Poeti_und_heiße:
     def __init__(self, name):
         self.name = name
+
+        fill = (" "*(55-len(name)) + "|")
         print()
         print(" --------------------------------------------------------------------------------")
-        print("|   Hallo, mein Name ist " + name + "!                                          ")
+        print("|   Hallo, mein Name ist " + name + "!" + fill)
         print("|   Ich bin ein poeti.                                                           |")
         print("|   Ein poeti kann Texte oder Worte zu anderen (besseren?) Texten verarbeiten.   |")
         print(" --------------------------------------------------------------------------------")
