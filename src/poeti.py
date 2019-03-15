@@ -9,14 +9,47 @@ import time
 class newPoet:
     def __init__(self, name):
         self.name = name
-        print("Hallo, mein Name ist " + name + "!")
-        print("Ich bin ein poeti.")
-        print("Ein poeti kann Texte oder Worte zu anderen (besseren?) Texten verarbeiten.")
+        print()
+        print(" --------------------------------------------------------------------------------")
+        print("|   Hallo, mein Name ist " + name + "!                                          ")
+        print("|   Ich bin ein poeti.                                                           |")
+        print("|   Ein poeti kann Texte oder Worte zu anderen (besseren?) Texten verarbeiten.   |")
+        print(" --------------------------------------------------------------------------------")
         print()
 
 
-    def saySomething(self, word):
-        print(getWord.Synonym(word))
+
+    def saySomething(self):
+        print()
+        print("Synonym:  " + getWord.Synonym(self.word))
+        print()
+        print("Reim:     " + getWord.Rhyme(self.word))
+        print()
+
+
+
+    def collectSomeWords(self):
+        flag = True
+        self.words = []
+
+        while flag == True:
+            elem = input("Gib mir ein Wort! \n")
+            if elem == "stop" or elem == "no" or elem == "nein":
+                flag = False
+            else:
+                self.words.append(elem)
+                print()
+        try:
+            self.word = random.choice(self.words)
+            print()
+            print("---------------------------------------------------")
+            print("Unser Wort des Tages: " + self.word)
+            print("---------------------------------------------------")
+        except IndexError:
+                print("no Input")
+                pass
+
+
 
     # Gibt das eingegebene Wort, ein dazupassendes Synonym und ein dazupassenden Reim aus.
     def wsr(self, words):
@@ -37,7 +70,9 @@ class newPoet:
             time.sleep(0.7)
             print()
             time.sleep(3)
-    
+
+
+
     # Wandelt von einem Text zufällige Wörter in Reimwörter oder Synonyme um und gibt diesen dann aus.
     # Es kann eine der Optionen ["mix", "reim", "synonym"] gewählt werden und die Dichte der zu verändernden Worte gewählt werden.
     def file2poetry(self, filepath, option, density):
@@ -73,3 +108,19 @@ class newPoet:
                 string += word + " "
             string += "\n"
         print(string)
+
+
+    def wortWechsel(self):
+        print("-------------")
+        print("Wortwechsel:")
+        print("-------------")
+        print()
+        word = self.word
+        for i in range(20):
+            if i%2 == 0:
+                word = getWord.Synonym(word)
+                print(word)
+            else:
+                word = getWord.Rhyme(word)
+                print(word)
+        

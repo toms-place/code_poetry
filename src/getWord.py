@@ -16,6 +16,7 @@ def Synonym(word):
                                 Synonymliste.append(term['term'])
                 returnWord = random.choice(Synonymliste)
         except IndexError:
+                #print("no Synonym found")
                 pass
         except json.decoder.JSONDecodeError:
                 pass
@@ -36,6 +37,7 @@ def Rhyme(word):
 
                 returnWord = random.choice(Reimwortliste)
         except IndexError:
+                #print("no Rhyme found")
                 pass
 
         return returnWord
