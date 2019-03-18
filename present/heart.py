@@ -1,6 +1,6 @@
 import time
 
-size = 20
+size = 30
 
 def heart():
     for i in range(size):

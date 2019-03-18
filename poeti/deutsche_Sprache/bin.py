@@ -2,9 +2,8 @@ from bs4 import BeautifulSoup
 from src import getWord, getLines
 from random import randint
 import random
-import requests
-import json
 import time
+import os
 
 class ein_Poeti_und_heiße:
     def __init__(self, name):
@@ -97,7 +96,7 @@ class ein_Poeti_und_heiße:
         print("Song: " + filepath.split("/")[1].split(".")[0])
         print("------------------")
         print()
-        lines = getLines.fromFile(filepath)
+        lines = getLines.fromTXT(filepath)
         newLines = []
         for line in lines:
             if line != "ABSATZ":
@@ -151,3 +150,78 @@ class ein_Poeti_und_heiße:
             time.sleep(1)
             if i != (amount) - 1:
                 print("∫")
+
+    def schreibe_wenn_dann_Sätze(self, amount=5):
+        print()
+        print("----------------")
+        print("Wenn-Dann Sätze:")
+        print("----------------")
+        print()
+        
+        nameLines = getLines.fromTXT("./textstelle/de/Vornamen/vornamen.txt")
+        verbenLines = getLines.fromTXT(os.path.normpath("./textstelle/de/Verben (untrennbare)/verben.txt"))
+        for i in range(amount):
+            verb = random.choice(verbenLines)[0]
+            print("Wenn " + random.choice(nameLines)[0] + " und " + random.choice(nameLines)[0] + " " + verb + ",")
+            print("Dann " + random.choice(verbenLines)[0] + " " + random.choice(nameLines)[0] + " und " + random.choice(nameLines)[0] + " beim " + getWord.Rhyme(verb) + ".")
+            print()
+            time.sleep(2)
+
+
+    def schreibe_sei_wie_du_bist_Sätze(self, amount=5):
+        print()
+        print("----------------")
+        print("Sei Sätze:")
+        print("----------------")
+        print()
+        
+        personenadjektive = getLines.fromTXT(os.path.normpath("./textstelle/de/Adjektive (die zu Personen passen)/personenadjektive.txt"))
+        for i in range(amount):
+            adj = random.choice(personenadjektive)[0]
+            rhyme = getWord.Rhyme(adj)
+            print("+ Sei " + random.choice(personenadjektive)[0] + " und " + adj + ",")
+            print("- jedoch nicht " + rhyme + ".")
+            time.sleep(2)
+
+    def schreibe_mit_Gefühl(self, amount=5):
+        print()
+        print("----------------")
+        print("Gefühle:")
+        print("----------------")
+        print()
+        
+        feelings = getLines.fromYAML(os.path.normpath("./textstelle/de/Gefühle/gefuehle.yaml"))
+        for i in range(amount):
+            feeling = random.choice(feelings)
+            rhyme = getWord.Rhyme(feeling)
+            print("Ich empfinde " + random.choice(feelings) + " und " + feeling + ",")
+            print("und noch dazu stört mich " + rhyme + ".")
+            time.sleep(2)
+
+
+    def erfinde_Worte(self, amount=10):
+        print()
+        print("-------------------")
+        print("Ikea + Komposition:")
+        print("-------------------")
+        print()
+        
+        ikeas = getLines.fromTXT(os.path.normpath("./textstelle/de/IKEA Kategorien/ikea_kategorien.txt"))
+        komposits = getLines.fromTXT(os.path.normpath("./textstelle/de/Komposita hinten (Personen)/komposita_hinten_person.txt"))
+
+        for i in range(amount):
+            ikea = random.choice(ikeas)[0]
+            komposit = random.choice(komposits)[0]
+            neuesWort = ikea + komposit
+            print(neuesWort)
+            print()
+            time.sleep(2)
+
+    def konjuguere(self, amount=10):
+        print()
+        print("-------------------")
+        print("Konjugation:")
+        print("-------------------")
+        print()
+        
+        print(getWord.Konjugation("spazieren", "ich", "Futur I Konjunktiv II"))
