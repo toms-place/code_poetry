@@ -8,7 +8,7 @@ def Synonym(word):
         try:
                 url = 'https://www.openthesaurus.de/synonyme/search?q=' + word + '&format=application/json'
                 headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
-                r = requests.get(url, headers=headers)
+                r = requests.get(url, headers=headers, timeout=10)
                 data = json.loads(r.content)['synsets']
                 Synonymliste = []
                 for terms in data:
@@ -31,7 +31,7 @@ def Rhyme(word):
         returnWord = word
         try:
                 page_link = 'https://reime.woxikon.de/ger/' + str(word) + '.php'
-                page_response = requests.get(page_link, timeout=5)
+                page_response = requests.get(page_link, timeout=10)
                 page_content = BeautifulSoup(page_response.content, "html.parser")
                 Reimwortliste = []
                 links = page_content.find_all('div', {"class": "rhymes-list-word"})
@@ -55,7 +55,7 @@ def Konjugation(word, person="ich", zeit="Präsens", imperative=False, imperativ
         returnWord = word
         try:
                 page_link = 'https://verben.woxikon.de/verbformen/' + str(word) + '.php'
-                page_response = requests.get(page_link, timeout=5)
+                page_response = requests.get(page_link, timeout=10)
                 page_content = BeautifulSoup(page_response.content, "html.parser")
                 if imperative != True:
                         table = page_content.find_all('table', {"class": "conjugations-table"})[1]

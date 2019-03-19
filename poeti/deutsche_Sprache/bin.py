@@ -200,7 +200,7 @@ class ein_Poeti_und_heiße:
         print("----------------")
         print()
         
-        nameLines = getLines.fromTXT("./textstelle/de/Vornamen/vornamen.txt")
+        nameLines = getLines.fromTXT(os.path.normpath("./textstelle/de/Vornamen/vornamen.txt"))
         verbenLines = getLines.fromTXT(os.path.normpath("./textstelle/de/Verben (untrennbare)/verben.txt"))
         for i in range(amount):
             verb = random.choice(verbenLines)[0]
