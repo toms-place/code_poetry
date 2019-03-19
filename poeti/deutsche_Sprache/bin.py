@@ -305,17 +305,18 @@ class ein_Poeti_und_heiße:
         next()
 
     def verabschiede_mich(self):
-        for i in range(40):
-            print()
-            print()
-            print()
-            print()
-            print()
-            print()
-            print()
-            print()
-            print(heart.getHeart(30))
-            time.sleep(0.5)
+        for i in range(60):
+            print("\n"*10)
+            if i%4 == 0:
+                print(heart.getHeart(20))
+            elif i%4 == 2:
+                print(heart.getHeart(26))
+            elif i%4 == 3:
+                print(heart.getHeart(30))
+            else:
+                print(heart.getHeart(24))
+            time.sleep(0.4)
+        print("Danke!")
 
 
 
