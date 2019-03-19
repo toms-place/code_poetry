@@ -20,6 +20,10 @@ def Synonym(word):
                 pass
         except json.decoder.JSONDecodeError:
                 pass
+        except requests.exceptions.ReadTimeout:
+                print("Synonym: awkward ReadTimeout error --> Ich muss noch ein bisschen überlegen..")
+                print()
+                pass
 
         return returnWord
 
@@ -33,11 +37,15 @@ def Rhyme(word):
                 links = page_content.find_all('div', {"class": "rhymes-list-word"})
 
                 for rhymes in links:
-                        Reimwortliste.append(rhymes.select('a')[0].text.replace("{n}", "").replace("{nm}", "").replace("{f}", "").replace("{m}", "").strip())
+                        Reimwortliste.append(rhymes.select('a')[0].text.replace("{n}", "").replace("{nm}", "").replace("{fm}", "").replace("{f}", "").replace("{m}", "").strip())
 
                 returnWord = random.choice(Reimwortliste)
         except IndexError:
                 #print("no Rhyme found")
+                pass
+        except requests.exceptions.ReadTimeout:
+                print("Reim: awkward ReadTimeout error --> Ich muss noch ein bisschen überlegen..")
+                print()
                 pass
 
         return returnWord
@@ -85,7 +93,7 @@ def Konjugation(word, person="ich", zeit="Präsens", imperative=False, imperativ
                 #print("no Konjugation found")
                 pass
         except requests.exceptions.ReadTimeout:
-                print("awkward ReadTimeout error")
+                print("Konjugation: awkward ReadTimeout error --> Ich muss noch ein bisschen überlegen..")
                 print()
                 pass
 

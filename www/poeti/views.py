@@ -3,7 +3,8 @@ from django.http import HttpResponseRedirect
 from .forms import NameForm
 
 def index(request):
-    return render(request, 'index.html', {})
+    context = {'output': ''}
+    return render(request, 'index.html', context)
 
 def get_name(request):
     # if this is a POST request we need to process the form data

@@ -4,6 +4,7 @@ from random import randint
 import random
 import time
 import os
+from present import heart
 
 class ein_Poeti_und_heiße:
     def __init__(self, name):
@@ -27,6 +28,7 @@ class ein_Poeti_und_heiße:
         print()
         print("Reim:     " + getWord.Rhyme(self.word))
         print()
+        next()
 
 
 
@@ -36,7 +38,7 @@ class ein_Poeti_und_heiße:
 
         while flag == True:
             elem = input("Gib mir ein Wort!\n")
-            if elem == "stop" or elem == "no" or elem == "nein":
+            if elem == "stop" or elem == "no" or elem == "nein" or elem == "":
                 flag = False
             else:
                 self.words.append(elem)
@@ -51,6 +53,7 @@ class ein_Poeti_und_heiße:
         except IndexError:
                 print("no Input")
                 pass
+        next()
 
 
 
@@ -86,18 +89,55 @@ class ein_Poeti_und_heiße:
             time.sleep(0.7)
             print()
             time.sleep(3)
+        next()
 
 
 
-    # Wandelt von einem Text zufällige Wörter in Reimwörter oder Synonyme um und gibt diesen dann aus.
-    # Es kann eine der Optionen ["mix", "reim", "synonym"] gewählt werden und die Dichte der zu verändernden Worte gewählt werden.
-    def ändere_Text(self, filepath, option, density):
+    # Wandelt von einem Text zufällige Wörter in Reimwörter oder Synonyme um und gibt den neu generierten Text aus.
+    # Es kann eine der Optionen ["mix", "reim", "synonym"] und die Dichte der zu verändernden Worte gewählt werden.
+    def ändere_Text(self, filepath="", option="reim", density=3):
         print()
         print("------------------")
-        print("Song: " + filepath.split("/")[1].split(".")[0])
-        print("------------------")
+        print("ich.ändere_Text")
         print()
-        lines = getLines.fromTXT(filepath)
+        print("Wandelt von einem Text zufällige Wörter in Reimwörter oder Synonyme um und gibt den neu generierten Text aus.")
+        print("Es kann eine der Optionen [mix, reim, synonym] und die Dichte der zu verändernden Worte gewählt werden.")
+        print("------------------")
+
+        lines = []
+        if filepath == "" or filepath == self.word:
+            print()
+            print("------------------")
+            print("Song for: " + self.word)
+            print("------------------")
+            print()
+            lines = getLines.fromSongtexte(self.word)
+            print()
+            print("------------------")
+            print('Original:')
+            print("------------------")
+            print()
+            for line in lines:
+                outLine = ""
+                if line != "ABSATZ":
+                    for word in line:
+                        outLine += word + " "
+                else:
+                    outLine += "\n"
+                print(outLine)
+                time.sleep(1)
+            print()
+            print("------------------")
+            print('Wait while processing..')
+            print("------------------")
+            print()
+        else:
+            print()
+            print("------------------")
+            print("Song: " + filepath.split("/")[len(filepath.split("/"))-1].split(".")[0])
+            print("------------------")
+            print()
+            lines = getLines.fromTXT(filepath)
         newLines = []
         for line in lines:
             if line != "ABSATZ":
@@ -119,16 +159,16 @@ class ein_Poeti_und_heiße:
                     else:
                         newLine.append(word)
                 newLines.append(newLine)
-                
             else:
-                newLines.append("")
+                newLines.append("\n")
 
-        string = "\n"
         for line in newLines:
+            outLine = ""
             for word in line:
-                string += word + " "
-            string += "\n"
-        print(string)
+                outLine += word + " "
+            print(outLine)
+            time.sleep(1)
+        next()
 
 
     # Wandelt ein Wort in ein Synonym und weiter in einen Reim und diesen Reim weiter in ein Synonym und so weiter.
@@ -151,6 +191,7 @@ class ein_Poeti_und_heiße:
             time.sleep(1)
             if i != (amount) - 1:
                 print("∫")
+        next()
 
     def schreibe_wenn_dann_Sätze(self, amount=5):
         print()
@@ -167,6 +208,7 @@ class ein_Poeti_und_heiße:
             print("Dann " + random.choice(verbenLines)[0] + " " + random.choice(nameLines)[0] + " und " + random.choice(nameLines)[0] + " beim " + getWord.Rhyme(verb) + ".")
             print()
             time.sleep(2)
+        next()
 
 
     def schreibe_sei_wie_du_bist_Sätze(self, amount=5):
@@ -180,9 +222,11 @@ class ein_Poeti_und_heiße:
         for i in range(amount):
             adj = random.choice(personenadjektive)[0]
             rhyme = getWord.Rhyme(adj)
-            print("+ Sei " + random.choice(personenadjektive)[0] + " und " + adj + ",")
-            print("- jedoch nicht " + rhyme + ".")
+            print("Sei " + random.choice(personenadjektive)[0] + " und " + adj + ",")
+            print("jedoch nicht " + rhyme + ".")
+            print()
             time.sleep(2)
+        next()
 
     def schreibe_mit_Gefühl(self, amount=5):
         print()
@@ -197,7 +241,9 @@ class ein_Poeti_und_heiße:
             rhyme = getWord.Rhyme(feeling)
             print("Ich empfinde " + random.choice(feelings) + " und " + feeling + ",")
             print("und noch dazu stört mich " + rhyme + ".")
+            print()
             time.sleep(2)
+        next()
 
 
     def erfinde_Worte(self, amount=10):
@@ -217,6 +263,7 @@ class ein_Poeti_und_heiße:
             print(neuesWort)
             print()
             time.sleep(2)
+        next()
 
     def konjugiere(self, amount=10):
         print()
@@ -255,3 +302,26 @@ class ein_Poeti_und_heiße:
         print("führt das " + inf1 + " zum " + getWord.Rhyme(konj1))
         print("und das " + inf2 + " zum " + getWord.Rhyme(konj2))
         print("Doch wie " + getWord.Synonym(inf1) + " ist " + getWord.Rhyme(konj1))
+        next()
+
+    def verabschiede_mich(self):
+        for i in range(20):
+            print()
+            print()
+            print()
+            print()
+            print()
+            print()
+            print()
+            print()
+            print(heart.getHeart(30))
+            time.sleep(1)
+
+
+
+
+def next():
+    print()
+    input("Weiter?")
+    print()
+    return
