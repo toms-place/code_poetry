@@ -167,7 +167,7 @@ class ein_Poeti_und_heiße:
             for word in line:
                 outLine += word + " "
             print(outLine)
-            time.sleep(1)
+            time.sleep(2)
         next()
 
 
@@ -188,7 +188,7 @@ class ein_Poeti_und_heiße:
             else:
                 word = getWord.Rhyme(word)
                 print("Reim:       " + word)
-            time.sleep(1)
+            time.sleep(2)
             if i != (amount) - 1:
                 print("∫")
         next()
@@ -305,7 +305,7 @@ class ein_Poeti_und_heiße:
         next()
 
     def verabschiede_mich(self):
-        for i in range(20):
+        for i in range(40):
             print()
             print()
             print()
@@ -315,7 +315,7 @@ class ein_Poeti_und_heiße:
             print()
             print()
             print(heart.getHeart(30))
-            time.sleep(1)
+            time.sleep(0.5)
 
 
 
