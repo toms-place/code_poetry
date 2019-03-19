@@ -7,6 +7,7 @@ import os
 
 class ein_Poeti_und_heiße:
     def __init__(self, name):
+        self.word = "initialwort"
         self.name = name
 
         fill = (" "*(55-len(name)) + "|")
@@ -217,11 +218,40 @@ class ein_Poeti_und_heiße:
             print()
             time.sleep(2)
 
-    def konjuguere(self, amount=10):
+    def konjugiere(self, amount=10):
         print()
         print("-------------------")
-        print("Konjugation:")
+        print("Konjugationen:")
         print("-------------------")
         print()
         
-        print(getWord.Konjugation("spazieren", "ich", "Futur I Konjunktiv II"))
+
+        verbenLines = getLines.fromTXT(os.path.normpath("./textstelle/de/Verben (untrennbare)/verben.txt"))
+        verb1 = random.choice(verbenLines)[0]
+        verb2 = random.choice(verbenLines)[0]
+
+        persons = ["ich", "du", "er/sie/es", "wir", "ihr", "sie"]
+        person = random.choice(persons)
+
+        '''
+        futur2 = getWord.Konjugation(verb2, person, "Futur II Indikativ")
+        pronomen = futur2.split(" ")[0]
+        verbFromFutur = ""
+        try:
+            verbFromFutur = futur2.split(" ")[1]
+        except IndexError:
+            print(futur2)
+            print("no Konjugation found")
+            pass
+        '''
+
+        konj1 = getWord.Konjugation(verb1, person, random.choice(["Präsens", "Präteritum"]))
+        konj2 = getWord.Konjugation(verb2, person, random.choice(["Präsens", "Präteritum"]))
+
+        inf1 = getWord.Konjugation(verb1, "", "", True, 2)
+        inf2 = getWord.Konjugation(verb2, "", "", True, 2)
+
+        print("Wenn " + person + " " + konj1 + " und " + konj2)
+        print("führt das " + inf1 + " zum " + getWord.Rhyme(konj1))
+        print("und das " + inf2 + " zum " + getWord.Rhyme(konj2))
+        print("Doch wie " + getWord.Synonym(inf1) + " ist " + getWord.Rhyme(konj1))

@@ -42,7 +42,7 @@ def Rhyme(word):
 
         return returnWord
 
-def Konjugation(word, person="ich", zeit="Präsens", imperative=False, iForm=1):
+def Konjugation(word, person="ich", zeit="Präsens", imperative=False, imperativeForm=1):
         #print(person + " -->")
         returnWord = word
         try:
@@ -77,12 +77,16 @@ def Konjugation(word, person="ich", zeit="Präsens", imperative=False, iForm=1):
                         table = page_content.find_all('table', {"class": "conjugations-table"})[0]
                         tds = table.select('td')
                         for i, td in enumerate(tds):
-                                if i == iForm:
+                                if i == imperativeForm:
                                         returnWord = td.text.strip()
 
 
         except IndexError:
                 #print("no Konjugation found")
+                pass
+        except requests.exceptions.ReadTimeout:
+                print("awkward ReadTimeout error")
+                print()
                 pass
 
         return returnWord
